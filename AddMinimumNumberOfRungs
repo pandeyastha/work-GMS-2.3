@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int addRungs(vector<int>& rungs, int dist) {
+        int countRungs=0;
+        int start=0;
+        for(auto x: rungs){
+            if(x-start<=dist)start=x;
+            else {
+                while(x-start>dist){
+                    int countRungsTemp=(x-start)/dist;
+                    if((x-start)%dist==0)countRungsTemp--;
+                    start=x;
+                    countRungs+=countRungsTemp;
+                }
+            }
+        }
+        return countRungs;
+    }
+};
