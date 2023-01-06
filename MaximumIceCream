@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxIceCream(vector<int>& costs, int coins) {
+        sort(costs.begin(),costs.end());
+        int count=0;
+        for(auto x:costs){
+            if(coins-x<0)return count;
+            else{                                                               //Basic Greedy T=O(NlogN)
+                count++;
+                coins-=x;
+            }
+        }
+        return count;
+    }
+};
