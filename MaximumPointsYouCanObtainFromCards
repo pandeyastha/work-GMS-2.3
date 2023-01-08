@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        int maxScore=0,temp=0,sz=cardPoints.size()-1;
+        for(int i=0;i<k;++i)
+            temp+=cardPoints[i];
+        int j=k-1;
+        maxScore=max(maxScore,temp);
+        while(k--){
+            temp+=cardPoints[sz--]-cardPoints[j--];
+            maxScore=max(maxScore,temp);
+        }
+        return maxScore;
+    }
+};                                                                                    Tc=O(2*k)  sp=O(1)
