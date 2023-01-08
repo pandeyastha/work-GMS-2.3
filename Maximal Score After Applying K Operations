@@ -1,0 +1,17 @@
+#define ll long long 
+class Solution {
+public:
+    long long maxKelements(vector<int>& nums, int k) {
+        priority_queue<ll>pq(nums.begin(),nums.end());
+        ll score=0;
+        
+        while(k--){
+            ll temp=pq.top();
+            pq.pop();
+            score+=temp;
+            pq.push((temp/3)+(temp%3==0?0:1));
+        }
+        return score;
+            
+    }
+};
