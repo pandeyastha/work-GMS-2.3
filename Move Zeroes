@@ -1,0 +1,17 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int low=0;
+        int mid=0;
+        int high=nums.size()-1;
+        while(mid<=high){
+            if(nums[mid]==0)mid++;
+            else {
+                swap(nums[low++],nums[mid++]);
+            }
+        }
+    }
+};
+
+
+//  Tc=O(N)  sp=O(1) --------------------------------------------------------------------------------------------------------------
