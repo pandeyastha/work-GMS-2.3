@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        if(n==0||n==1) return n;
+        //long long int val=1+8l*n;                                                                              // TC=O(sqrt compiler based)   sp=O(1)
+        double discriminant=sqrt(1+8l*n);
+        int finVal=(discriminant-1)/2;
+        return finVal;        
+   }
+};
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                        VIA BINARY SEARCH
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        if(n==0||n==1) return n;
+        int left=0,rows=0,answer=0;                                                                         //tc= O(logN)  sp=O(1)
+        int right=n;
+        while(left<=right){
+             rows=left+(right-left)/2;
+             long long int coinsNeeded=(rows*(rows+1l))/2;
+             if(coinsNeeded<=n){left=rows+1;answer=rows;}
+             else right=rows-1;
+        }
+        return answer;
+
+    }
+};
