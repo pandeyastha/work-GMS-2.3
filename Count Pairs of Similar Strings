@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int similarPairs(vector<string>& words) {
+        int pairs=0;
+        map<vector<bool>,int>mp;
+        for(auto x:words){
+            vector<bool>isPresent(26);
+            for(auto y:x)isPresent[y-'a']=1;
+            if(mp.find(isPresent)!=mp.end())pairs+=mp[isPresent];
+            mp[isPresent]++;
+        }
+        return pairs;
+    }
+};
