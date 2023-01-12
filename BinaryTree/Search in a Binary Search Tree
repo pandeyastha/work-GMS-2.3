@@ -11,3 +11,10 @@ public:
 
 
 tc= O(log nodes)=o(height)    sp=O(1)                brute->o(n) :: check all
+---------------------------------------------------------------------------------------             ITERATIVE           ----------------------------------
+
+
+while (root != nullptr && root->val != val) {
+      root = (root->val > val) ? root->left : root->right;
+    }
+    return root;
