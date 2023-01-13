@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int xorAllNums(vector<int>& nums1, vector<int>& nums2) {
+        int firstSize=nums1.size();
+        int secondSize=nums2.size();
+        if(firstSize%2==0 &&secondSize%2==0) return 0;
+        int firstXor=0,secondXor=0;
+        for(auto x: nums1)firstXor^=x;
+        for(auto x:nums2)secondXor^=x;
+        return ((firstSize%2)*secondXor)^((secondSize%2)*firstXor);
+        
+    }
+};
+
+
+
+
+
+TC= O(M+N)   sp=O(1)
