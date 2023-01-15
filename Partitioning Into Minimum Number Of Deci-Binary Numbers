@@ -1,0 +1,8 @@
+class Solution {
+public:
+    int minPartitions(string n) {
+        int mx=0;
+        for(auto x:n) if(x-'0'>mx)mx=(x-'0');                                       //TC= O(Len)   sp=O(1)
+        return mx;
+    }
+};
