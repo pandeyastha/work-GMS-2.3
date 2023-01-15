@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int numberOfRounds(string loginTime, string logoutTime) {
+        int rounds=0;
+        int inTime=((loginTime[0]-'0')*10+(loginTime[1]-'0'))*60+
+                    (loginTime[3]-'0')*10+(loginTime[4]-'0');
+        int outTime=((logoutTime[0]-'0')*10+(logoutTime[1]-'0'))*60+
+                    (logoutTime[3]-'0')*10+(logoutTime[4]-'0');
+        int flag=0;
+        if(inTime<=outTime)flag=1;
+        if(inTime%15!=0)inTime+=15-(inTime%15);
+        if(outTime%15!=0)outTime-=outTime%15;
+        if(flag == 1 && outTime<inTime) return 0;
+        if(abs(inTime-outTime)<15) return 0;
+        if(outTime<=inTime){
+            rounds+=(1440-inTime)/15 +outTime/15;
+        }
+        else rounds=(outTime-inTime)/15;
+        return rounds;
+    }
+};
