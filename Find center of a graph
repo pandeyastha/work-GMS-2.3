@@ -1,0 +1,7 @@
+var findCenter = function(edges) {
+    let firstX=edges[0][0];
+    let firstY=edges[0][1];
+    let secondX=edges[1][0];
+    let secondY=edges[1][1];
+    return (firstX===secondX?firstX:(firstX===secondY?firstX:(firstY===secondX?firstY:secondY)));
+};
