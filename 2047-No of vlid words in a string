@@ -1,0 +1,54 @@
+class Solution {
+private:
+    bool checkValidWord(string word){
+        for(int i=0;i<word.length();++i){
+        if(word[i]=='-'||(word[i]>='a'&&word[i]<='z')||word[i]=='!'||word[i]   ==' '||word[i]=='.'||word[i]==',') continue;
+        else return 1;}
+        return 0;
+    }
+    bool checkHyphen(string word){
+        if(word[0]=='-'||word[word.length()-1]=='-') return 1;
+        int count=0;
+        for(int i=1;i<word.length()-1;++i)
+        {   if(word[i]=='-')
+            {
+                count++; if(count>1) return 1;
+                if(word[i-1]>='a'&& word[i]<='z'   && word[i+1]>='a'&& word[i+1]<='z') continue;
+                else return 1;
+            }
+            
+        }
+        return 0;
+    }
+
+ bool checkPunctuation(string word){
+     int count=0;
+     for(auto c:word)if(c=='!'||c=='.'||c==','||c==' ')count++;
+     if(count>1) return 1;
+     if(count==1 && (word[word.length()-1]!='!'&&word[word.length()-1]!='.'&&word[word.length()-1]!=','&& word[word.length()-1]!=' ')) return 1;
+     return 0;
+ }
+
+
+
+
+
+public:
+    int countValidWords(string sentence) {
+        vector<string>words;
+        istringstream ss(sentence);
+        string tempWord;
+        while(ss>>tempWord)
+        words.push_back(tempWord);              //cheanged string -> array  
+
+        int counter=0;
+        for(auto x: words){
+            int res=0;
+            res+=checkValidWord(x);
+            res+=checkHyphen(x);
+            res+=checkPunctuation(x);
+            if(res==0)counter++;
+        }
+        return counter;
+    }
+};
