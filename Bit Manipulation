@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int getXORSum(vector<int>& arr1, vector<int>& arr2) {
+     int xorA=0,xorB=0;
+     for(auto x:arr1)xorA^=x;
+     for(auto x:arr2)xorB^=x;
+     return xorA&xorB;   
+    }
+};
+// formaula   (.^.)&(.^.)=(.&,)^(.&.)  
