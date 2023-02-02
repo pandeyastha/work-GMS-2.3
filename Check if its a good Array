@@ -1,0 +1,17 @@
+class Solution {
+private:
+    int gcd(int a,int b){
+        if(b==0) return a;
+        return gcd(b,a%b);
+    }
+public:
+    bool isGoodArray(vector<int>& nums) {
+        if(nums.size()==1 && nums[0]==1) return 1;
+        if(nums.size()==1 && nums[0]!=1) return 0;
+        int result=nums[0];
+        for(int i=1;i<nums.size();++i)
+        result=gcd(result,nums[i]);
+        return result==1;
+
+    }
+};
