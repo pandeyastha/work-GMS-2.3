@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows<=1) return s;
+        int dir=1;
+        int j=0;
+        vector<string>v(numRows,"");
+        for(auto x:s){
+            if(j==numRows-1||j==0)dir*=(-1);
+            v[j]+=x;
+            if(dir==-1)j++;
+            else j--;
+        }
+        string result;
+        for(auto x:v)
+        for(auto y:x) result+=y;
+        return result;
+
+    }
+};
