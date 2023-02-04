@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string p, string s) {
+        if(p.length()<s.length()) return {};
+        vector<int>result;
+        vector<int>sMap(26,0);
+        for(auto x:s)sMap[x-'a']++;
+        vector<int>pmap(26,0);
+        for(int i=0;i<s.length();++i)pmap[p[i]-'a']++;
+        if(pmap==sMap)result.push_back(0);
+        int pointer=0;
+        for(int i=s.length();i<p.length();++i){
+            pmap[p[pointer]-'a']--;
+            pointer++;
+            pmap[p[i]-'a']++;
+            if(pmap==sMap)result.push_back(pointer);
+        }
+        return  result;
+    }
+};
