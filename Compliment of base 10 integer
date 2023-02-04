@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int bitwiseComplement(int n) {
+        if(n==0) return 1;
+        int noOfDigits=log2(n)+1;
+        int xorValue=1;
+        while(noOfDigits--)xorValue<<=1;
+        return (n^(xorValue-1));
+
+    }
+};
