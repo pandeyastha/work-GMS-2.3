@@ -1,0 +1,27 @@
+int lengthOfLastWord(string s) {
+        stringstream ss(s);
+        string temp;
+        int tlength=0;
+        while(ss>>temp){
+            tlength=temp.length();
+        }
+        return tlength;
+    }
+    
+    
+    
+    
+    --------------------------------------------------------------
+    class Solution {
+public:                                                                             // this is more efficient
+    int lengthOfLastWord(string s) {
+        int len=0;
+        int tail=s.length()-1;
+        while(s[tail]==' ')tail--;
+        while(tail>=0 &&s[tail]!=' '){
+            len++;
+            tail--;
+        } 
+        return len;
+    }
+};
