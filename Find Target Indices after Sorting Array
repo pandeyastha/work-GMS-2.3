@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        int count=0;
+        int rank=0;
+        for(auto x:nums){
+            count+= x==target;
+            rank+= x<target;
+        }
+        vector<int>result;
+        while(count--)result.push_back(rank++);
+        return result;
+    }
+};
