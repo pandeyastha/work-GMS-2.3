@@ -1,0 +1,37 @@
+class Solution {
+vector<int>change(string str){
+    vector<int>result;
+    int flagReal=1,flagComp=1;
+    int i=0;
+    int value=0;
+    if(str[0]=='-'){flagReal=-1;i++;}
+    while(str[i]!='+'){
+        value=value*10+(str[i]-'0');
+        i++;
+    }
+result.push_back(flagReal*value);
+value=0;
+i++;
+if(str[i]=='-'){flagComp=-1;i++;}
+while(str[i]!='i'){
+    value=value*10+ (str[i]-'0');
+    i++;
+}
+result.push_back(flagComp*value);
+return result;
+}
+
+public:
+    string complexNumberMultiply(string num1, string num2) {
+        vector<int>temp1,temp2;
+        temp1=change( num1);
+        int real1=temp1[0],img1=temp1[1];
+        temp2=change( num2);
+        int real2=temp2[0],img2=temp2[1];
+        int realValue=real1*real2-img1*img2;
+        int compValue=real1*img2 +real2*img1 ;
+        string res;
+        res=to_string(realValue)+'+'+to_string(compValue)+'i';
+        return res;
+    }
+};
