@@ -1,0 +1,3 @@
+find min no
+check (n&1)  since last bit in add always set & less expensive than mod %
+
