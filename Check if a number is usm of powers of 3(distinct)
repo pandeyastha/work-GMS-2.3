@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool checkPowersOfThree(int n) {
+        int cp=n;
+        while(cp){
+            int dig=cp%3;
+            if(dig>1) return false;
+            cp=cp/3;
+        }
+        return true;
+    }
+};
