@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int secondHighest(string s) {
+        vector<int>dig(10);
+        int sec=-1,first=-1;
+        for(auto x:s){
+            if(isdigit(x)){
+                int d= x-'0';
+                if(d>first){ sec=first;first=d;}
+                else if(d<first &&d>sec)sec=d;
+            }
+            }
+        
+        return sec;
+    }
+};
