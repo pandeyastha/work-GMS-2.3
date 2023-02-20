@@ -1,0 +1,32 @@
+/*  A very important fact here is, adding two random numbers won't make a new random number that is uniformly distributed.
+e.g.
+random1: 03
+random2: 17
+random1+random2 doesn't make a random 1~10
+The combinations of random1 and random2 are uniformly distributed,
+but their sum are not, because some different combinations can have the same sum, 
+this increases the probability of certain sum values.
+
+However, we can make a uniformly distributed 49 from random 7 this way:
+(random7-1)*7+random7
+
+Actually for any random "n":
+"(randomN-1)*n+randomN" is uniformly distributed random n^2.
+
+Also be aware that "mod" operation on a random doesn't guarante a uniformly distributed result either. 
+"randomN%m" is uniformly distributed only when n%m==0, that's why rand40%10 works here.
+
+*/
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+class Solution {
+public:
+    int rand10() {
+        int rand40=40;
+        while(rand40>=40)
+        rand40=(rand7()-1)*7 +rand7()-1;
+        return rand40%10+1;   
+    }
+};
