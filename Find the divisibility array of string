@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> divisibilityArray(string word, int m) {
+        vector<int>divArray(word.size());
+        long long int rem=0;
+        for(int i=0;i<word.size();++i){
+            if(( rem*10+(word[i]-'0'))%m ==0) divArray[i]=1;
+            else divArray[i]=0;
+            rem= (rem*10+(word[i]-'0'))%m;
+        }
+        return divArray;
+        
+    }
+};
