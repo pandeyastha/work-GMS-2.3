@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        vector<bool>map(26);
+        int count=0;
+        for(auto x:allowed)map[x-'a']=1;
+        for(auto x:words){
+            vector<bool>vec(26,0);
+            for(auto y:x)vec[y-'a']=1;
+        bool flag=0;
+        for(int i=0;i<26;++i)
+        if(vec[i]==1 &&map[i]==0) {flag=!flag;break;}
+        if(flag==0)count++;
+        }
+        return count;
+    }
+};
