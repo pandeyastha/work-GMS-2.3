@@ -1,0 +1,14 @@
+class Solution {
+public:
+    double trimMean(vector<int>& arr) {
+        sort(arr.begin(),arr.end());
+        int len=arr.size();
+        int startIndex= 0.05*len;
+        int endIndex=len-1-startIndex;
+        int sum=0;
+        cout<<startIndex<<" "<<endIndex<<" "<<len<<endl;
+        for(int i=startIndex;i<=endIndex;++i)sum+=arr[i];
+        double ans= sum*1.0;
+        return ans/(0.9*len);
+    }
+};
