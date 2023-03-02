@@ -1,0 +1,20 @@
+class Solution {
+private:
+    static bool myDick(vector<int>&first,vector<int>&second){
+        return first[1]>second[1];
+    }
+public:
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        long long units=0;
+        sort(boxTypes.begin(),boxTypes.end(),myDick);
+        int i=0;
+        while(truckSize>0){
+            int value=min(truckSize,boxTypes[i][0]);
+            truckSize-=value;
+            units+=value*boxTypes[i][1];
+            i++;
+            if(i>=boxTypes.size())break;
+        }
+        return units;
+    }
+};
