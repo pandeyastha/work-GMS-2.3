@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int low=0;
+        int mid=0;
+        int high=0;
+        while(high<nums.size()){
+            while(high<nums.size() && nums[high]==nums[mid])high++;
+            nums[low]=nums[mid];
+            if(high-mid>1){low++;nums[low]=nums[mid];low++;}
+            else low++;
+            mid=high;
+        }
+        return low;
+    }
+};
