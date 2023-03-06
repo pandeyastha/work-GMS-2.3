@@ -1,0 +1,21 @@
+ListNode* mergeNodes(ListNode* head) {
+        if(head==NULL) return head;
+        ListNode* curr=head->next;
+        ListNode* prev=head;
+        ListNode* last=new ListNode();
+        ListNode* dummy=last;
+         while(curr->val==0){prev=curr;curr=curr->next;}
+        while(curr){
+            int sum=0;
+            while(curr->val!=0){
+                sum+=curr->val;
+                prev=curr;
+                curr=curr->next;
+            }
+            ListNode* temp= new  ListNode(sum);
+            last->next=temp;
+            last=temp;
+            while(curr && curr->val==0){prev=curr;curr=curr->next;}
+        }
+        return dummy->next;
+    }
