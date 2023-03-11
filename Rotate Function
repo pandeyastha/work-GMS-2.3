@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxRotateFunction(vector<int>& nums) {
+        if(nums.size()<=1)return 0;
+        int sum=0,runningSum=0;
+        int sz=nums.size();
+        for(int i=sz-1;i>=0;--i){
+            sum+=nums[i];
+            runningSum+=nums[i]*i;
+        }
+        int maxValue=runningSum;
+        int noOfLoops=sz-1;
+        int last=sz-1;
+        while(noOfLoops--){
+            int removedVal=nums[last];
+            runningSum +=sum-removedVal*sz;
+            maxValue=max(maxValue,runningSum);
+            last--;
+        }
+        return maxValue;
+    }
+};
