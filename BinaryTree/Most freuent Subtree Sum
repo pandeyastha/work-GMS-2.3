@@ -1,0 +1,22 @@
+class Solution {
+public:
+int dfs(TreeNode* root,unordered_map<int,int>&mp){
+    if(root==NULL) return 0;
+    int left=dfs(root->left,mp);
+    int right=dfs(root->right,mp);
+    int value=root->val+left+right;
+    mp[value]++;
+    return value;
+
+}
+    vector<int> findFrequentTreeSum(TreeNode* root) {
+        if(root==NULL) return {};
+        vector<int>result;
+        int maxFreq=0;
+        unordered_map<int,int>mp;
+        int trash=dfs(root,mp);
+        for(auto x:mp) if(x.second>maxFreq)maxFreq=x.second;
+        for(auto x:mp) if(x.second==maxFreq)result.push_back(x.first);
+        return result;
+    }
+};
