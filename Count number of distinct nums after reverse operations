@@ -1,0 +1,20 @@
+class Solution {
+public:
+int rev(int x){
+    int value=0;
+    while(x){
+        value=value*10+x%10;
+        x/=10;
+    }
+    return value;
+}
+    int countDistinctIntegers(vector<int>& nums) {
+        unordered_map<int,int>mp;
+        for(auto x:nums){
+            mp[x]++;
+            int newNum=rev(x);
+            mp[newNum]++;
+        }
+        return mp.size();
+    }
+};
