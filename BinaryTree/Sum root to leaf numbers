@@ -1,0 +1,17 @@
+lass Solution {
+public:
+void dfs(TreeNode* root, int value,int & fin){
+    if(!root) return ;
+    if(root->left==NULL && root->right==NULL) {fin+=value*10+root->val;return ;}
+    value=value*10+root->val;
+    dfs(root->left,value,fin);
+    dfs(root->right,value,fin);
+
+}
+    int sumNumbers(TreeNode* root) {
+        if(root==NULL) return 0;
+        int fin=0,value=0;
+        dfs(root,value,fin);
+        return fin;
+    }
+};
