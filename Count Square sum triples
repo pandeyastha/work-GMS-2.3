@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int countTriples(int n) {
+        vector<bool>sq(n*n+1);
+        for(int i=1;i<=n;++i)sq[i*i]=true;
+        int res=0;
+        for(int i=1;i<=n;++i){
+            for(int j=i;i*i+j*j<=n*n;j++)
+            res+=2*sq[i*i+j*j];
+        }
+        return res;
+    }
+};
