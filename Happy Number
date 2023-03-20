@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int dig(int x){
+        int temp=0;
+        while(x){
+            temp+=(x%10)*(x%10);
+            x=x/10;
+        }
+        return temp;
+    }
+    bool isHappy(int n) {
+        int slow=n;
+        int fast=n;
+        do{
+            slow=dig(slow);
+            fast=dig(fast);
+            fast=dig(fast);
+        }while(slow!=fast);
+        return slow==1;
+    }
+};
