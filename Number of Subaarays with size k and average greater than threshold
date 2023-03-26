@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int numOfSubarrays(vector<int>& arr, int k, int threshold) {
+        if(k>arr.size()||k==0) return 0;
+        int numOfSubarrays=0;
+        int runningSum=0;
+        int removePointer=0;
+        for(int i=0;i<=k-1;++i)runningSum+=arr[i];
+        if(runningSum/k>=threshold)numOfSubarrays++;
+        for(int i=k;i<arr.size();++i){
+            runningSum+=arr[i]-arr[removePointer++];
+            if(runningSum/k>=threshold)numOfSubarrays++;
+        }
+        return numOfSubarrays;
+    }
+};
