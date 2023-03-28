@@ -1,0 +1,44 @@
+class Solution {
+public:
+ void find3max(vector<int>&A,int&mx1,int& mx2, int&mx3){
+    for(int i=0;i<A.size();++i){
+        if(A[i]>mx1){
+            mx3=mx2;
+            mx2=mx1;
+            mx1=A[i];
+        }
+        else if (A[i]<=mx1 && A[i]>mx2){
+            mx3=mx2;
+            mx2=A[i];
+        }
+        else if(A[i]<=mx2 && A[i]>mx3 )
+        mx3=A[i];
+        else continue;
+    }
+    return ;
+}
+void find3withMin(vector<int>&A,int& mn1,int& mn2){
+    for(int i=0;i<A.size();++i){
+        if(A[i]<mn1){
+            mn2=mn1;
+            mn1=A[i];
+        }
+        else if (A[i]>=mn1 && A[i]<mn2)
+        mn2=A[i];
+        else continue;
+    }
+    return ;    
+}
+  int maximumProduct(vector<int>& A) {
+        if(A.size()<3) return 0;
+        int mx1=INT_MIN;
+    int mx2=mx1,mx3=mx1;
+    find3max(A,mx1,mx2,mx3);
+    int mn2=INT_MAX,mn1=INT_MAX;
+    find3withMin(A,mn1,mn2);
+    return max(mx1*mx2*mx3,mx1*mn1*mn2);
+
+
+    }
+    };
+       
