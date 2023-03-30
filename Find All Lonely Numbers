@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> findLonely(vector<int>& nums) {
+        if(nums.size()<2) return nums;
+        sort(nums.begin(),nums.end());
+        vector<int>answer;
+        if(nums[1]-nums[0]>1)answer.push_back(nums[0]);
+        for(int i=1;i<nums.size()-1;++i){
+        if((nums[i]-nums[i-1])>1 && 
+        (nums[i+1]-nums[i])>1)
+        answer.push_back(nums[i]);
+        }
+        int sz=nums.size()-1;
+        if(nums[sz]-nums[sz-1]>1)answer.push_back(nums[sz]);
+        return answer;
+
+    }
+};
