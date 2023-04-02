@@ -1,0 +1,45 @@
+class Solution {
+private:
+    int binSch(vector<int>& potions,long long  x, long long success){
+        int low=0;
+        int high=potions.size()-1;
+        int ans=potions.size();
+        while(low<=high){
+            int mid= low+(high-low)/2;
+            potions[mid]*=1l;
+            if(potions[mid]*x>=success){
+                ans=mid;
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+        return ans;
+    }
+public:
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+       
+        int pSize=potions.size();
+        int spSize=spells.size();
+        vector<int>answer(spSize,0);
+        sort(potions.begin(),potions.end());                                                                  // tc= mlogm +nlog(m)  // o(sort )space
+        for(int i=0;i<spells.size();++i){
+            int index=binSch(potions,spells[i],success);
+            answer[i]=pSize-index;
+        }
+        return answer;
+    }
+};
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
