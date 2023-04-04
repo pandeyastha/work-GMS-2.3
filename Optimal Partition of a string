@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool checkBit(int flag, int n){
+        return (flag & (1<<n) ) ;
+    }
+    void setBit(int& flag,int n){
+        flag= flag|(1<<n);
+    }
+    int partitionString(string s) {
+        int ans=1;
+        int i=0;
+        int flag=0;
+        while(i<s.length()){
+            int n= s[i]-'a';
+            if(checkBit(flag,n)){
+                flag=0;
+                ans++;
+            }
+            setBit(flag,n);
+            i++;
+        }
+        return ans;
+    }
+};
