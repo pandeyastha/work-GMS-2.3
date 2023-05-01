@@ -1,0 +1,12 @@
+function average(salary: number[]): number {
+        let mn= 1000001;
+        let mx=1;
+        let sum=0;
+        const size= salary.length -2.0;
+        for(let i=0;i<salary.length; ++i){
+            sum+=salary[i];
+            if(salary[i]<mn) mn=salary[i];
+            if(salary[i]>mx) mx=salary[i];
+        }
+        return (sum-mx-mn)/size;
+};
